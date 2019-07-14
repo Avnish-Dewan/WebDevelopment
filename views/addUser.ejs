@@ -1,0 +1,41 @@
+<html>
+    <body>
+        <input id="i1" placeholder="name"><br>
+        <input id="i2" placeholder="username"><br>
+        <input id="i3" placeholder="pass"><br>
+        <input id="i4" placeholder="email"><br>
+        <input id="i5" placeholder="Phone Number"><br>
+        <input id="i6" placeholder="dob"><br>
+        <input id="i7" placeholder="City"><br>
+        <input id="i8" placeholder="gender"><br>
+        <input id="i9" placeholder="userType"><br>
+        <input id="i10" placeholder="status"><br>
+        <button id="submitBtn">Add User</button>     
+    </body>
+    <script>
+        document.getElementById("submitBtn").onclick=function()
+        {
+            var userObj=new Object();
+            userObj.name=document.getElementById('i1').value;
+            userObj.email=document.getElementById('i2').value;
+            userObj.pass=document.getElementById('i3').value;
+            userObj.phone=document.getElementById('i4').value;
+            userObj.city=document.getElementById('i5').value;
+            userObj.dob=document.getElementById('i6').value;
+            userObj.add=document.getElementById('i7').value;
+            userObj.gender=document.getElementById('i8').value;
+            userObj.userType=document.getElementById('i9').value;
+            userObj.status=document.getElementById('i10').value;
+            //console.log(userObj);
+            var xhr=new XMLHttpRequest();
+            xhr.open("POST","/add")
+            xhr.setRequestHeader("Content-Type","application/json");
+            xhr.send(JSON.stringify(userObj));
+            xhr.addEventListener("load",function()
+                                {
+                                    console.log(xhr.responseText);
+                                });
+        }
+
+    </script>
+</html>
